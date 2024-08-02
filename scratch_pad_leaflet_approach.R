@@ -457,6 +457,9 @@ rat2021_fir |> group_by(Tag.ID) |> summarize(max = max(a)) |> print(n = 100)
 
 rat2021_fir$Datechr <- as.character(rat2021_fir$Date)
 
+temp1 <- rat2021_fir[rat2021_fir$Tag.ID == "11" & rat2021_fir$Date == "2021-05-13",]
+rat2021_fir[rat2021_fir$Tag.ID == "11",]
+
 ## ui ----
 #library(shinyWidgets)
 ui <- fluidPage(
@@ -467,7 +470,7 @@ ui <- fluidPage(
             min(rat2021_fir$Date), 
             max(rat2021_fir$Date),
             value = min(rat2021_fir$Date),
-            step=2,
+            step=1,
             animate=T),# "time is the input value used below, "Date" is just a label, min/max sets the boundary on values in the slider, and value is the starting value.  Step is how fast the slider moves
          selectizeInput("tag", "Tag",
                      choices = c("Tag.ID" = "", 
